@@ -6,7 +6,8 @@
     "scripts": {
         "start": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/server.ts",
         "lint": "eslint . --ext .ts",
-        "lint-fix": "eslint . --ext .ts --fix"
+        "lint-fix": "eslint . --ext .ts --fix",
+        "prod": "ts-node -T -P tsconfig.json src/server.ts"
     },
     "dependencies": {
         "cookie-session": "^2.0.0",
