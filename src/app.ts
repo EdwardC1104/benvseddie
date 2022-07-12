@@ -40,4 +40,21 @@ app.get('/add/:name', (req, res, next) => {
     next();
 });
 
+app.get('/get/:name', (req, res, next) => {
+    if (!score) {
+        res.status(500).send('Scores not loaded');
+    }
+
+    if (!Object.keys(score).includes(req.params.name)) {
+        res.status(404).send('User not found');
+    }
+
+    res.json(score[req.params.name]);
+
+    fs.writeFile('score.json', JSON.stringify(score), 'utf8', (err) => {
+        if (err) console.log(err);
+    });
+    next();
+});
+
 export { app };
